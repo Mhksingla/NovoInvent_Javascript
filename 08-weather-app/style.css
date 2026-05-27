@@ -1,0 +1,112 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial,sans-serif;
+
+    background:#f1f5f9;
+
+    display:flex;
+
+    justify-content:center;
+
+    padding:2rem;
+}
+
+.container{
+
+    background:white;
+
+    padding:2rem;
+
+    border-radius:1rem;
+
+    width:100%;
+
+    max-width:500px;
+
+    box-shadow:
+    0 5px 20px rgba(0,0,0,0.1);
+}
+
+h1{
+
+    text-align:center;
+
+    margin-bottom:1rem;
+}
+
+form{
+
+    display:flex;
+
+    gap:1rem;
+
+    margin-bottom:1rem;
+}
+
+input{
+
+    flex:1;
+
+    padding:0.8rem;
+}
+
+button{
+
+    border:none;
+
+    background:#2563eb;
+
+    color:white;
+
+    padding:0.8rem 1rem;
+
+    border-radius:0.5rem;
+
+    cursor:pointer;
+}
+
+/* LOADING */
+
+#loading{
+
+    display:none;
+
+    text-align:center;
+
+    margin:1rem 0;
+}
+
+/* ERROR */
+
+#error{
+
+    color:red;
+
+    text-align:center;
+
+    margin-bottom:1rem;
+}
+
+/* CARD */
+
+#weatherCard{
+
+    background:#e2e8f0;
+
+    border-radius:1rem;
+
+    padding:1.5rem;
+
+    display:none;
+}
+
+#weatherCard h2{
+
+    margin-bottom:1rem;
+}
