@@ -1,0 +1,274 @@
+:root{
+
+    --primary:#2563eb;
+    --sidebar:#0f172a;
+    --background:#f1f5f9;
+    --card:#ffffff;
+    --text:#1e293b;
+}
+
+/* RESET */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial,sans-serif;
+
+    background:var(--background);
+
+    color:var(--text);
+
+    min-height:100vh;
+}
+
+/* GRID LAYOUT */
+
+.container{
+
+    display:grid;
+
+    grid-template-columns:16rem 1fr;
+
+    min-height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+
+    background:var(--sidebar);
+
+    color:white;
+
+    padding:2rem;
+
+    position:sticky;
+
+    top:0;
+
+    height:100vh;
+}
+
+.sidebar h2{
+
+    font-size:
+    clamp(1.5rem,4vw,2.5rem);
+
+    margin-block-end:2rem;
+}
+
+.sidebar ul{
+
+    list-style:none;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:1rem;
+}
+
+.sidebar li{
+
+    padding:1rem;
+
+    border-radius:1rem;
+
+    transition:0.3s ease;
+
+    cursor:pointer;
+}
+
+/* ACCESSIBILITY */
+
+.sidebar li:focus-visible{
+
+    outline:3px solid #38bdf8;
+}
+
+/* HOVER */
+
+.sidebar li:hover{
+
+    background:#1e293b;
+
+    transform:translateX(0.5rem);
+}
+
+/* MAIN CONTENT */
+
+.main-content{
+
+    padding:2rem;
+
+    content-visibility:auto;
+}
+
+/* HEADER */
+
+.header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:1rem;
+
+    margin-block-end:2rem;
+}
+
+.header h1{
+
+    font-size:
+    clamp(2rem,5vw,3.5rem);
+}
+
+/* BUTTON */
+
+.header button{
+
+    border:none;
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:0.8rem 1.5rem;
+
+    border-radius:1rem;
+
+    cursor:pointer;
+
+    transition:0.3s ease;
+}
+
+.header button:hover{
+
+    background:#1d4ed8;
+}
+
+/* ACCESSIBILITY */
+
+.header button:focus-visible{
+
+    outline:3px solid black;
+}
+
+/* WIDGETS */
+
+.widgets{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(16rem,1fr));
+
+    gap:1.5rem;
+}
+
+/* CARD */
+
+.card{
+
+    background:var(--card);
+
+    padding:2rem;
+
+    border-radius:1.5rem;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:1rem;
+
+    aspect-ratio:1;
+
+    transition:0.3s ease;
+
+    box-shadow:
+    0 0.5rem 1.5rem rgba(0,0,0,0.08);
+
+    container-type:inline-size;
+}
+
+.card:hover{
+
+    transform:translateY(-0.5rem);
+}
+
+.card h3{
+
+    font-size:
+    clamp(1.2rem,4vw,2rem);
+}
+
+.card p{
+
+    font-size:
+    clamp(1.5rem,5vw,3rem);
+
+    font-weight:bold;
+
+    color:var(--primary);
+}
+
+/* CONTAINER QUERY */
+
+@container (width < 300px){
+
+    .card{
+
+        background:#dbeafe;
+    }
+}
+
+/* MODERN MEDIA QUERY */
+
+@media(width <= 900px){
+
+    .container{
+
+        grid-template-columns:1fr;
+    }
+
+    .sidebar{
+
+        height:auto;
+
+        position:relative;
+    }
+}
+
+@media(width <= 600px){
+
+    .widgets{
+
+        grid-template-columns:1fr;
+    }
+
+    .header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+    }
+
+    .main-content{
+
+        padding:1rem;
+    }
+}

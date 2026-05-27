@@ -1,0 +1,170 @@
+/* CSS VARIABLES */
+
+:root{
+
+    --bg:oklch(96% 0.02 250);
+
+    --card:rgba(255,255,255,0.7);
+
+    --text:#1e293b;
+
+    --primary:#2563eb;
+
+    --border:transparent;
+}
+
+/* RESET */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* BODY */
+
+body{
+
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:2rem;
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    font-family:Arial,sans-serif;
+
+    transition:0.3s ease;
+}
+
+/* DARK MODE USING :has() */
+
+body:has(#darkMode:checked){
+
+    --bg:#0f172a;
+
+    --card:#1e293bcc;
+
+    --text:#ffffff;
+
+    --primary:#38bdf8;
+}
+
+/* TOGGLE */
+
+.theme-toggle{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:1rem;
+
+    font-size:1.2rem;
+}
+
+/* WRAPPER */
+
+.wrapper{
+
+    container-type:inline-size;
+}
+
+/* CARD */
+
+.card{
+
+    background:var(--card);
+
+    backdrop-filter:blur(1rem);
+
+    padding:2rem;
+
+    border-radius:1.5rem;
+
+    inline-size:min(90vw,25rem);
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:1rem;
+
+    text-align:center;
+
+    border:0.3rem solid var(--border);
+
+    transition:0.3s ease;
+
+    box-shadow:
+    0 1rem 2rem rgba(0,0,0,0.1);
+}
+
+/* HAS SELECTOR */
+
+.card:has(#active:checked){
+
+    --border:var(--primary);
+}
+
+/* TITLE */
+
+.card h2{
+
+    font-size:clamp(1.5rem,5vw,2.5rem);
+}
+
+/* BUTTON */
+
+.card button{
+
+    border:none;
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:0.8rem 1.5rem;
+
+    border-radius:1rem;
+
+    cursor:pointer;
+
+    transition:0.3s ease;
+}
+
+.card button:hover{
+
+    transform:scale(1.05);
+}
+
+/* CONTAINER QUERY */
+
+@container (width < 350px){
+
+    .card{
+
+        background:#dbeafe;
+    }
+}
+
+/* NESTING */
+
+.card{
+
+    & p{
+
+        line-height:1.6;
+    }
+}
