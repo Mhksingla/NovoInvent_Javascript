@@ -15,12 +15,17 @@ body{
 
 .container{
 
-    max-width:1000px;
+    max-width:1200px;
 
     margin:auto;
 }
 
-h1,h2{
+header{
+
+    margin-bottom:2rem;
+}
+
+h1{
 
     margin-bottom:1rem;
 }
@@ -31,8 +36,14 @@ input{
 
     padding:1rem;
 
+    border:1px solid #cbd5e1;
+
+    border-radius:0.5rem;
+
     margin-bottom:2rem;
 }
+
+/* PRODUCT GRID */
 
 #productList,
 #cartList{
@@ -47,6 +58,8 @@ input{
     margin-bottom:2rem;
 }
 
+/* CARD */
+
 .card{
 
     background:white;
@@ -57,6 +70,12 @@ input{
 
     box-shadow:
     0 5px 15px rgba(0,0,0,0.1);
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
 }
 
 .card img{
@@ -66,11 +85,25 @@ input{
     height:200px;
 
     object-fit:contain;
+
+    margin-bottom:1rem;
 }
 
-button{
+.card h3{
 
-    margin-top:1rem;
+    font-size:1rem;
+
+    margin-bottom:0.5rem;
+}
+
+.card p{
+
+    margin-bottom:1rem;
+}
+
+/* BUTTON */
+
+button{
 
     border:none;
 
@@ -78,9 +111,16 @@ button{
 
     color:white;
 
-    padding:0.8rem 1rem;
+    padding:0.8rem;
 
     border-radius:0.5rem;
 
     cursor:pointer;
+
+    transition:0.3s ease;
+}
+
+button:hover{
+
+    background:#1d4ed8;
 }

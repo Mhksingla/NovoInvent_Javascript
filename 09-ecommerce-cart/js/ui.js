@@ -1,25 +1,53 @@
-import { addToCart, cart }
-from "./cart.js";
+import {
 
-// PRODUCTS
+   addToCart,
+   removeFromCart,
+   getCart
+
+} from "./cart.js";
+
+// PRODUCT LIST
+
+const productList =
+document.getElementById(
+   "productList"
+);
+
+// CART LIST
+
+const cartList =
+document.getElementById(
+   "cartList"
+);
+
+// RENDER PRODUCTS
 
 export function renderProducts(products){
 
-   const productList =
-   document.getElementById(
-      "productList"
-   );
-
    productList.innerHTML = "";
+
+   // EMPTY PRODUCTS
+
+   if(products.length === 0){
+
+      productList.innerHTML = `
+
+         <h2>
+            No Products Found
+         </h2>
+      `;
+
+      return;
+   }
 
    products.forEach(product => {
 
-      const div =
+      const card =
       document.createElement("div");
 
-      div.classList.add("card");
+      card.classList.add("card");
 
-      div.innerHTML = `
+      card.innerHTML = `
 
          <img src="${product.image}">
 
@@ -28,6 +56,7 @@ export function renderProducts(products){
          <p>$${product.price}</p>
 
          <button
+            class="add-btn"
             data-id="${product.id}">
 
             Add to Cart
@@ -35,62 +64,108 @@ export function renderProducts(products){
          </button>
       `;
 
-      productList.appendChild(div);
-   });
-
-   // BUTTON EVENTS
-
-   productList
-   .querySelectorAll("button")
-   .forEach(button => {
-
-      button.addEventListener(
-
-         "click",
-
-         () => {
-
-            const product =
-            products.find(
-
-               p =>
-               p.id ==
-               button.dataset.id
-            );
-
-            addToCart(product);
-
-            renderCart();
-         }
-      );
+      productList.appendChild(card);
    });
 }
 
-// CART
+// PRODUCT EVENT DELEGATION
+
+productList.addEventListener(
+
+   "click",
+
+   (event) => {
+
+      if(
+         event.target.classList.contains(
+            "add-btn"
+         )
+      ){
+
+         const id =
+         event.target.dataset.id;
+
+         const product =
+         window.allProductsData.find(
+
+            item => item.id == id
+         );
+
+         addToCart(product);
+
+         renderCart();
+      }
+   }
+);
+
+// RENDER CART
 
 export function renderCart(){
 
-   const cartList =
-   document.getElementById(
-      "cartList"
-   );
+   const cart = getCart();
 
    cartList.innerHTML = "";
 
+   // EMPTY CART
+
+   if(cart.length === 0){
+
+      cartList.innerHTML = `
+
+         <h3>
+            Cart is Empty
+         </h3>
+      `;
+
+      return;
+   }
+
    cart.forEach(product => {
 
-      const div =
+      const card =
       document.createElement("div");
 
-      div.classList.add("card");
+      card.classList.add("card");
 
-      div.innerHTML = `
+      card.innerHTML = `
 
          <h3>${product.title}</h3>
 
          <p>$${product.price}</p>
+
+         <button
+            class="remove-btn"
+            data-id="${product.id}">
+
+            Remove
+
+         </button>
       `;
 
-      cartList.appendChild(div);
+      cartList.appendChild(card);
    });
 }
+
+// REMOVE EVENT DELEGATION
+
+cartList.addEventListener(
+
+   "click",
+
+   (event) => {
+
+      if(
+         event.target.classList.contains(
+            "remove-btn"
+         )
+      ){
+
+         removeFromCart(
+
+            event.target.dataset.id
+         );
+
+         renderCart();
+      }
+   }
+);

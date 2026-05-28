@@ -1,4 +1,6 @@
-import { fetchProducts }
+import {
+   fetchProducts
+}
 from "./api.js";
 
 import {
@@ -17,6 +19,10 @@ document.getElementById(
 // PRODUCTS
 
 let allProducts = [];
+
+// GLOBAL ACCESS
+
+window.allProductsData = allProducts;
 
 // DEBOUNCE
 
@@ -43,6 +49,11 @@ async function init(){
    allProducts =
    await fetchProducts();
 
+   // UPDATE GLOBAL
+
+   window.allProductsData =
+   allProducts;
+
    renderProducts(allProducts);
 
    renderCart();
@@ -59,7 +70,11 @@ searchInput.addEventListener(
    debounce((event) => {
 
       const value =
-      event.target.value.toLowerCase();
+      event.target.value
+      .toLowerCase()
+      .trim();
+
+      // FILTER
 
       const filtered =
       allProducts.filter(product =>

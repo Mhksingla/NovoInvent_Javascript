@@ -1,10 +1,25 @@
+// FETCH PRODUCTS
+
 export async function fetchProducts(){
 
-   const response =
-   await fetch(
+   try{
 
-      "https://fakestoreapi.com/products"
-   );
+      const response =
+      await fetch(
 
-   return response.json();
+         "https://fakestoreapi.com/products"
+      );
+
+      const data =
+      await response.json();
+
+      return data;
+
+   }catch(error){
+
+      console.log(
+         "API Error:",
+         error
+      );
+   }
 }

@@ -1,12 +1,21 @@
-export let cart =
+// CART DATA
+
+let cart =
 
 JSON.parse(
 localStorage.getItem("cart")
 ) || [];
 
-// SAVE
+// GET CART
 
-export function saveCart(){
+export function getCart(){
+
+   return cart;
+}
+
+// SAVE CART
+
+function saveCart(){
 
    localStorage.setItem(
 
@@ -16,11 +25,23 @@ export function saveCart(){
    );
 }
 
-// ADD
+// ADD TO CART
 
 export function addToCart(product){
 
    cart.push(product);
+
+   saveCart();
+}
+
+// REMOVE FROM CART
+
+export function removeFromCart(id){
+
+   cart = cart.filter(
+
+      item => item.id != id
+   );
 
    saveCart();
 }
